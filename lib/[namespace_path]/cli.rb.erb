@@ -1,0 +1,15 @@
+require "thor"
+
+<%- @modules.each_with_index do |namespace,n| -%>
+<%= indent(n) %>module <%= namespace %>
+<%- end -%>
+<%= indent(@module_depth) %>class CLI < Thor
+
+<%= indent(@module_depth + 1) %>desc 'sample', 'Sample task'
+<%= indent(@module_depth + 1) %>def sample
+<%= indent(@module_depth + 2) %>puts "This is your new task"
+<%= indent(@module_depth + 1) %>end
+
+<%- (@module_depth ).downto(0) do |n| -%>
+<%= indent(n) %>end
+<%- end -%>

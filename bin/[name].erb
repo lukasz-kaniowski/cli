@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+begin
+  require '<%= @namespace_path %>/cli'
+rescue LoadError => e
+warn 'Could not load "<%= @namespace_path %>/cli"'
+  exit -1
+end
+
+<%= @modules.join('::') %>::CLI.start
